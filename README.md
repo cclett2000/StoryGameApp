@@ -70,4 +70,4 @@ The **Story Game!** is an interactive novel where players will be able to read t
   - Whenever a collectible is obtained, allow user the choice to view Achievments/Progression screen.
 
 ## Wireframe
-<img src="https://github.com/cclett2000/StoryGameApp/blob/master/vis_rep.png" width=600>
+<img src="https://github.com/cclett2000/StoryGameApp/blob/master/vis_rep.png" width=1000>
