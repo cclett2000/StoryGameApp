@@ -71,3 +71,11 @@ The **Story Game!** is an interactive novel where players will be able to read t
 
 ## Wireframe
 <img src="https://github.com/cclett2000/StoryGameApp/blob/master/vis_rep.png" width=1000>
+
+## Main UI
+<p float="left">
+  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/screenshots/dev1_mainUI.PNG">
+  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/gifs/dev_cap1-0.0.2.gif" width="575">
+</p>
+
+
