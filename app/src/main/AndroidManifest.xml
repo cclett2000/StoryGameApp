@@ -25,6 +25,26 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".Settings"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ContinueGame"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".NewGame"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Collectibles"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Credits"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

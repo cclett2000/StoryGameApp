@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Programmer(s): Charles Lett Jr.-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +12,7 @@
         android:id="@+id/main_BG"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="matrix"
+        android:scaleType="centerCrop"
         android:src="@drawable/fantasy_bg"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="0dp"
@@ -38,12 +39,12 @@
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/settings_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/title_BG"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintBottom_toBottomOf="@+id/settings_BTN_BG"
+        app:layout_constraintEnd_toEndOf="@+id/settings_BTN_BG"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/settings_BTN_BG"
+        app:layout_constraintTop_toTopOf="@+id/settings_BTN_BG"
+        app:layout_constraintVertical_bias="0.55" />
 
     <ImageView
         android:id="@+id/title_BG"
@@ -82,12 +83,12 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/title_BG"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintHorizontal_bias="0.801"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintTop_toTopOf="@+id/title_TV"
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/continue_game_BTN"
@@ -157,7 +158,7 @@
         android:layout_height="wrap_content"
         android:text="@string/version"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

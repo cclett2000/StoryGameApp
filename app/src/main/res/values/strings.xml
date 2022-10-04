@@ -3,7 +3,7 @@
     <string name="version">Ver. 0.0.1</string>
     <string name="app_name">StoryGameApp</string>
     <string name="story_name">Story Name Here!</string>
-    <string name="story_act">- Act 1 -</string>
+    <string name="story_act">- Act I -</string>
 
     <string name="new_game_btn">New Game</string>
     <string name="continue_game_btn">Continue</string>
