@@ -30,7 +30,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".ContinueGame"
+            android:name=".GameScreen"
             android:exported="true">
         </activity>
         <activity

@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         // continue game logic
         continue_btn.setOnClickListener{
-            val intent = Intent(this, ContinueGame::class.java)
+            val intent = Intent(this, GameScreen::class.java)
             startActivity(intent)
         }
 
         // new game logic
         new_game_btn.setOnClickListener{
-            val intent = Intent(this, NewGame::class.java)
+            val intent = Intent(this, GameScreen::class.java)
             startActivity(intent)
         }
 
