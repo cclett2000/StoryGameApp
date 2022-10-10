@@ -3,19 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/reading_view_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/main_bg"
+    android:layout_height="match_parent"
+    android:background="@color/story_bg_color"
+    >
+
+    <TextView
+        android:id="@+id/story_body_TV"
+        android:layout_width="385dp"
+        android:layout_height="620dp"
+        android:fadeScrollbars="false"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:maxLines="20"
+        android:scrollbars="vertical"
+        android:text="@string/placeholder_txt2"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.495" />
 
     <ImageView
         android:id="@+id/reading_view_border"
@@ -29,23 +39,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
-
-    <TextView
-        android:id="@+id/story_body_TV"
-        android:layout_width="375dp"
-        android:layout_height="610dp"
-        android:gravity="center"
-        android:fadeScrollbars="false"
-        android:scrollbars="vertical"
-        android:textColor="@color/black"
-        android:text="@string/placeholder_txt"
-        android:maxLines="21"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

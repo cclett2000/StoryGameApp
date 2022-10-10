@@ -10,4 +10,5 @@
 
 <!--GAME PAGE-->
     <color name="story_text_color">#FFFFFF</color>
+    <color name="story_bg_color">#B87333</color>
 </resources>

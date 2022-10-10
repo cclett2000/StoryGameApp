@@ -1,6 +1,6 @@
 <resources>
 <!--MAIN SCREEN-->
-    <string name="version">Ver. 0.0.2</string>
+    <string name="version">Ver. 0.0.4</string>
     <string name="app_name">StoryGameApp</string>
     <string name="story_name">Story Name Here!</string>
     <string name="story_act">- Act I -</string>
@@ -10,7 +10,12 @@
     <string name="collectable_btn">Collectibles</string>
     <string name="credits_btn">Credits</string>
 
+<!--SETTINGS SCREEN-->
+    <string name="text_size_setting">Enable Larger Font</string>
+    <string name="text_font_setting">Enable Simple Font</string>
+
 <!--GAME SCREEN-->
-    <string name="placeholder_txt">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</string>
+    <string name="placeholder_txt2">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</string>
+
 
 </resources>
