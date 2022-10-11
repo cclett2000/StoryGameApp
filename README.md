@@ -74,8 +74,8 @@ The **Story Game!** is an interactive novel where players will be able to read t
 
 ## Main UI
 <p float="left">
-  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/screenshots/dev1_mainUI.PNG">
-  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/gifs/dev_cap1-0.0.2.gif" width="555">
+  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/screenshots/dev1_mainUI.PNG" width="355">
+  <img src="https://github.com/cclett2000/StoryGameApp/blob/master/gifs/dev_cap1-0.0.2.gif" width="500">
 </p>
 
 ## UPDATES
