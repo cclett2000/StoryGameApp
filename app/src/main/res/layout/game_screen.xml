@@ -18,7 +18,7 @@
         android:scrollbars="vertical"
         android:text="@string/placeholder_txt2"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

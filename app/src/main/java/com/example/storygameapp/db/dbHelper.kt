@@ -25,15 +25,16 @@ class dbHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 +")")
 
         val settingsQuery =
-            ("CREATE TABLE IF NOT EXISTS " + PROGRESSION_TABLE_NAME + " ("
+            ("CREATE TABLE IF NOT EXISTS " + SETTINGS_TABLE_NAME + " ("
                     + SETTINGS_ID + " INTEGER PRIMARY KEY, " +
                     ENABLE_LARGE_FONT + " INTEGER," +
                     ENABLE_SIMPLE_FONT + " INTEGER" +
                     ")")
 
-
         db.execSQL(progressionQuery)
+        db.execSQL(settingsQuery)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
         // this method is to check if table already exists
@@ -51,17 +52,67 @@ class dbHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $SETTINGS_TABLE_NAME", null)
     }
-    //////////////////////////////////////////////////////////////////////////////
-    // SETTINGS
 
-    fun getFontSize(): Int?{
-        val cursor = getSettingData()
-        return cursor?.getInt(cursor.getColumnIndex(ENABLE_LARGE_FONT))
+    fun initSettingsTable(){
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(ENABLE_LARGE_FONT, 0)
+        values.put(ENABLE_SIMPLE_FONT, 0)
+
+        Log.i("DB_VAL", values.toString())
+
+        db.insert(SETTINGS_TABLE_NAME, null, values)
+        db.close()
     }
 
-    fun getSimpleFontSetting(): Int?{
+    // TODO: Implement this
+    private fun initProgressionTable(){
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(ENABLE_LARGE_FONT, 0)
+        values.put(ENABLE_SIMPLE_FONT, 0)
+
+        Log.i("DB_VAL", values.toString())
+
+        db.insert(SETTINGS_TABLE_NAME, null, values)
+        db.close()
+    }
+    //////////////////////////////////////////////////////////////////////////////
+    // SETTINGS
+    fun getFontSize(): Int? {
         val cursor = getSettingData()
-        return cursor?.getInt(cursor.getColumnIndex(ENABLE_SIMPLE_FONT))
+        var test = 0
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                test = cursor.getInt(cursor.getColumnIndex(ENABLE_LARGE_FONT))
+            }
+        }
+        return test
+    }
+    fun getSimpleFontSetting(): Int? {
+        val cursor = getSettingData()
+        var test = 0
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                test = cursor.getInt(cursor.getColumnIndex(ENABLE_SIMPLE_FONT))
+            }
+        }
+
+        return test
+    }
+
+
+    // update size setting
+    fun setFontSize(bigMode: Int){
+        val db = this.readableDatabase
+        db.execSQL("UPDATE $SETTINGS_TABLE_NAME SET $ENABLE_LARGE_FONT = $bigMode WHERE ID=1")
+    }
+
+    fun setSimpleFontSetting(simpleMode: Int){
+        val db = this.readableDatabase
+        db.execSQL("UPDATE $SETTINGS_TABLE_NAME SET $ENABLE_SIMPLE_FONT = $simpleMode WHERE ID=1")
     }
 
     companion object{
