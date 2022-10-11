@@ -1,6 +1,6 @@
 <resources>
 <!--MAIN SCREEN-->
-    <string name="version">Ver. 0.0.4</string>
+    <string name="version">Ver. 0.0.5</string>
     <string name="app_name">StoryGameApp</string>
     <string name="story_name">Story Name Here!</string>
     <string name="story_act">- Act I -</string>
