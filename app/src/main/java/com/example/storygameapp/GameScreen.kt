@@ -1,19 +1,17 @@
 package com.example.storygameapp
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import com.example.storygameapp.db.dbHelper
+import com.example.storygameapp.db.DBHelper
 
 class GameScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.game_screen)
 
-        val db = dbHelper(this, null)
+        val db = DBHelper(this, null)
         val storyView = findViewById<TextView>(R.id.story_body_TV)
 
         storyView.movementMethod = ScrollingMovementMethod()

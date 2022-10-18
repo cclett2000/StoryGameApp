@@ -3,7 +3,7 @@ package com.example.storygameapp
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.storygameapp.db.dbHelper
+import com.example.storygameapp.db.DBHelper
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class Settings : AppCompatActivity() {
@@ -11,7 +11,7 @@ class Settings : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_screen)
 
-        val db = dbHelper(this, null)
+        val db = DBHelper(this, null)
         val fontSizeSwitch = findViewById<SwitchMaterial>(R.id.large_font_switch)
 
         if (db.getFontSize() == 1){

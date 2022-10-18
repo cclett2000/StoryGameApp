@@ -5,15 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import com.example.storygameapp.db.dbHelper
+import com.example.storygameapp.db.DBHelper
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val db = dbHelper(this, null)
-        //db.initSettingsTable()
+        val db = DBHelper(this, null)
+        if (db.getSettingDBStatus() != 1 || db.getProgressionDBStatus() != 1) {
+            db.initSettingTable()
+            db.setSettingInitStatus(1)
+
+            db.initProgressionTable()
+            db.setProgressionInitStatus(1)
+        }
 
         //button vars
         val settings_btn = findViewById<ImageButton>(R.id.settings_BTN)
