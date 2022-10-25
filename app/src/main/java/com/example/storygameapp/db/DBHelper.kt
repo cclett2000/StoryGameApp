@@ -18,19 +18,31 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 + ID + " INTEGER PRIMARY KEY, " +
                 STORY_POS + " INTEGER," +
                 COLLECT_FOUND + " INTEGER," +
-                COLLECT_NEEDED + " INTEGER"
-                +")")
+                COLLECT_NEEDED + " INTEGER," +
+                PROGRESSION_DB_INIT + " INTEGER" +
+                ")")
 
         val settingsQuery =
             ("CREATE TABLE IF NOT EXISTS " + SETTINGS_TABLE_NAME + " ("
                     + SETTINGS_ID + " INTEGER PRIMARY KEY, " +
                     ENABLE_LARGE_FONT + " INTEGER," +
                     ENABLE_SIMPLE_FONT + " INTEGER," +
-                    SETTINGS_DB_INIT + " INTEGER" +
-                    ")")
+                    SETTINGS_DB_INIT + " INTEGER"
+                    + ")")
+
+        val collectibleQuery=
+            ("CREATE TABLE IF NOT EXISTS " + COLLECT_TABLE_NAME + " ("
+                    + COLLECT_ID + " INTEGER PRIMARY KEY, " +
+                    COLLECT_IMG_PATH + " TEXT," +
+                    COLLECT_TITLE + " TEXT, " +
+                    COLLECT_DESC + " TEXT, " +
+                    COLLECT_IS_UNLOCKED + " INTEGER," +
+                    COLLECT_DB_INIT + " INTEGER"
+                    + ")")
 
         db.execSQL(progressionQuery)
         db.execSQL(settingsQuery)
+        db.execSQL(collectibleQuery)
     }
 
 
@@ -40,15 +52,20 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         onCreate(db)
     }
 
-    private fun getProgressionData(): Cursor? {
+    fun getProgressionData(): Cursor? {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $PROGRESSION_TABLE_NAME", null)
 
     }
 
-    private fun getSettingData(): Cursor?{
+    fun getSettingData(): Cursor?{
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $SETTINGS_TABLE_NAME", null)
+    }
+
+    fun getCollectData(): Cursor?{
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $COLLECT_TABLE_NAME", null)
     }
 
     fun initSettingTable(){
@@ -77,6 +94,19 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         Log.i("DB_VAL", values.toString())
 
         db.insert(SETTINGS_TABLE_NAME, null, values)
+        db.close()
+    }
+
+    fun initCollectTable(){
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(COLLECT_IMG_PATH, "")
+        values.put(COLLECT_TITLE, "Completionist")
+        values.put(COLLECT_DESC, "Complete the entire story.")
+        values.put(COLLECT_IS_UNLOCKED, 1)
+
+        db.insert(COLLECT_TABLE_NAME, null, values)
         db.close()
     }
     //////////////////////////////////////////////////////////////////////////////
@@ -179,11 +209,27 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
     fun setCollectNeeded(simpleMode: Int){
         val db = this.readableDatabase
-        db.execSQL("PROGRES$PROGRESSION_TABLE_NAME SET $COLLECT_NEEDED = $simpleMode WHERE ID=1")
+        db.execSQL("UPDATE $PROGRESSION_TABLE_NAME SET $COLLECT_NEEDED = $simpleMode WHERE ID=1")
     }
     fun setProgressionInitStatus(simpleMode: Int){
         val db = this.readableDatabase
-        db.execSQL("PROGRES$PROGRESSION_TABLE_NAME SETS$PROGRESSION_DB_INIT = $simpleMode WHERE ID=1")
+        db.execSQL("UPDATE $PROGRESSION_TABLE_NAME SET $PROGRESSION_DB_INIT = $simpleMode WHERE ID=1")
+    }
+
+    // COLLECTIBLE
+    fun getCollectDBStatus(): Int?{
+        val cursor = getSettingData()
+        var test = 0
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                test = cursor.getInt(cursor.getColumnIndex(COLLECT_DB_INIT))
+            }
+        }
+        return test
+    }
+    fun setCollectInitStatus(simpleMode: Int){
+        val db = this.readableDatabase
+        db.execSQL("UPDATE $PROGRESSION_TABLE_NAME SET $PROGRESSION_DB_INIT = $simpleMode WHERE ID=1")
     }
 
     companion object{
@@ -204,5 +250,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val ENABLE_LARGE_FONT = "enable_large_font"
         val ENABLE_SIMPLE_FONT = "enable_simple_font"
         val SETTINGS_DB_INIT = "setting_db_init"
+
+        // collectibles
+        val COLLECT_TABLE_NAME = "collectibles"
+        val COLLECT_ID = "id"
+        val COLLECT_IMG_PATH = "img_path"
+        val COLLECT_TITLE = "title"
+        val COLLECT_DESC = "desc"
+        val COLLECT_IS_UNLOCKED = "is_unlocked"
+        val COLLECT_DB_INIT = "collect_db_init"
     }
 }

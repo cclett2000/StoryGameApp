@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val db = DBHelper(this, null)
+        db.initCollectTable()
         if (db.getSettingDBStatus() != 1 || db.getProgressionDBStatus() != 1) {
             db.initSettingTable()
             db.setSettingInitStatus(1)
