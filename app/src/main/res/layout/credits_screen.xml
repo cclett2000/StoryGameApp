@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:gravity="center"
-        android:text="The Devs"
+        android:text="Team OSO"
         android:textColor="@color/white"
         android:textSize="62sp"
         android:textStyle="bold"
