@@ -87,4 +87,6 @@ The **Story Game!** is an interactive novel where players will be able to read t
 Part of the database bugfixing
 > <img src="https://github.com/cclett2000/StoryGameApp/blob/master/screenshots/db_bugfix_snip1.PNG">
 
+- 0.0.9 -- Finished creating UI, implemented collectible system, updated database logic to support collectibles and fixed database related bugs
+> <img src="https://github.com/cclett2000/StoryGameApp/blob/master/gifs/dev_cap1-0.0.9.gif" width="380">
 
