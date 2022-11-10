@@ -3,6 +3,7 @@ package com.example.storygameapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import com.example.storygameapp.db.DBHelper
@@ -12,15 +13,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val db = DBHelper(this, null)
-        db.initCollectTable()
-        if (db.getSettingDBStatus() != 1 || db.getProgressionDBStatus() != 1) {
-            db.initSettingTable()
-            db.setSettingInitStatus(1)
+        // initialize database
+        Thread(Runnable {
+            val db = DBHelper(this, null)
+            db.initCollectTable()
+            if (db.getSettingDBStatus() != 1 || db.getProgressionDBStatus() != 1 || db.getCollectDBStatus() != 1) {
+                Log.i("DBINIT", "Initializing Database.")
 
-            db.initProgressionTable()
-            db.setProgressionInitStatus(1)
-        }
+                db.initSettingTable()
+                db.setSettingInitStatus(1)
+
+                db.initProgressionTable()
+                db.setProgressionInitStatus(1)
+
+                db.initCollectTable()
+                db.setCollectInitStatus(1)
+
+                Log.i("DBINIT", "Database Initialization Done.")
+
+            }
+        }).start()
 
         //button vars
         val settings_btn = findViewById<ImageButton>(R.id.settings_BTN)

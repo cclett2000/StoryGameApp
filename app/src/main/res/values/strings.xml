@@ -7,7 +7,7 @@
 
     <string name="new_game_btn">New Game</string>
     <string name="continue_game_btn">Continue</string>
-    <string name="collectable_btn">Collectibles</string>
+    <string name="collectable_btn">Achievements</string>
     <string name="credits_btn">Credits</string>
 
     <!--SETTINGS SCREEN-->

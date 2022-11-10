@@ -40,9 +40,18 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                     COLLECT_DB_INIT + " INTEGER"
                     + ")")
 
+        val dbInfoTableQuery =
+            ("CREATE TABLE IF NOT EXISTS " + DB_INIT_TABLE_NAME + " ("
+                    + DB_INIT_ID + " INTEGER PRIMARY KEY, " +
+                    COLLECT_DB_INIT + " INTEGER, " +
+                    SETTINGS_DB_INIT + " INTEGER, " +
+                    PROGRESSION_DB_INIT + " INTEGER"
+                    + " )")
+
         db.execSQL(progressionQuery)
         db.execSQL(settingsQuery)
         db.execSQL(collectibleQuery)
+        db.execSQL(dbInfoTableQuery)
     }
 
 
@@ -71,14 +80,16 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun initSettingTable(){
         val db = this.writableDatabase
         val values = ContentValues()
+        val initValue = ContentValues()
 
         values.put(ENABLE_LARGE_FONT, 0)
         values.put(ENABLE_SIMPLE_FONT, 0)
-        values.put(SETTINGS_DB_INIT, 1)
+        initValue.put(SETTINGS_DB_INIT, 1)
 
         Log.i("DB_VAL", values.toString())
 
         db.insert(SETTINGS_TABLE_NAME, null, values)
+        db.insert(DB_INIT_TABLE_NAME, null, initValue)
         db.close()
     }
 
@@ -86,27 +97,44 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun initProgressionTable(){
         val db = this.writableDatabase
         val values = ContentValues()
+        val initValue = ContentValues()
 
         values.put(ENABLE_LARGE_FONT, 0)
         values.put(ENABLE_SIMPLE_FONT, 0)
-        values.put(PROGRESSION_DB_INIT, 1)
-
+        initValue.put(SETTINGS_DB_INIT, 1)
         Log.i("DB_VAL", values.toString())
 
         db.insert(SETTINGS_TABLE_NAME, null, values)
+        db.insert(DB_INIT_TABLE_NAME, null, initValue)
         db.close()
     }
 
+    // TODO: Fix Achievment Init Bug
     fun initCollectTable(){
         val db = this.writableDatabase
         val values = ContentValues()
+        val initValue = ContentValues()
 
         values.put(COLLECT_IMG_PATH, "")
         values.put(COLLECT_TITLE, "Completionist")
-        values.put(COLLECT_DESC, "Complete the entire story.")
-        values.put(COLLECT_IS_UNLOCKED, 1)
+        values.put(COLLECT_DESC, "Completed the entire story.")
+        values.put(COLLECT_IS_UNLOCKED, 0)
+
+        values.put(COLLECT_IMG_PATH, "")
+        values.put(COLLECT_TITLE, "I am Commander Sheperd!")
+        values.put(COLLECT_DESC, "Made a decision during the story")
+        values.put(COLLECT_IS_UNLOCKED, 0)
+
+        values.put(COLLECT_IMG_PATH, "")
+        values.put(COLLECT_TITLE, "Pimp My App!")
+        values.put(COLLECT_DESC, "Opened the settings menu and changed a setting")
+        values.put(COLLECT_IS_UNLOCKED, 0)
+
+        initValue.put(COLLECT_DB_INIT, 1)
 
         db.insert(COLLECT_TABLE_NAME, null, values)
+        db.insert(DB_INIT_TABLE_NAME, null, initValue)
+
         db.close()
     }
     //////////////////////////////////////////////////////////////////////////////
@@ -153,7 +181,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
     fun setSettingInitStatus(simpleMode: Int){
         val db = this.readableDatabase
-        db.execSQL("UPDATE $SETTINGS_TABLE_NAME SETS$SETTINGS_DB_INIT = $simpleMode WHERE ID=1")
+        db.execSQL("UPDATE $DB_INIT_TABLE_NAME SET $SETTINGS_DB_INIT = $simpleMode WHERE ID=1")
     }
 
     // PROGRESSION
@@ -242,14 +270,12 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val STORY_POS = "story_position"
         val COLLECT_FOUND = "collectibles_found"
         val COLLECT_NEEDED = "collectibles_not_found"
-        val PROGRESSION_DB_INIT = "progression_db_init"
 
         // settings
         val SETTINGS_TABLE_NAME = "user_settings"
         val SETTINGS_ID = "id"
         val ENABLE_LARGE_FONT = "enable_large_font"
         val ENABLE_SIMPLE_FONT = "enable_simple_font"
-        val SETTINGS_DB_INIT = "setting_db_init"
 
         // collectibles
         val COLLECT_TABLE_NAME = "collectibles"
@@ -258,6 +284,13 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val COLLECT_TITLE = "title"
         val COLLECT_DESC = "desc"
         val COLLECT_IS_UNLOCKED = "is_unlocked"
+
+        // DB INIT
+        val DB_INIT_TABLE_NAME = "db_init"
+        val DB_INIT_ID = "id"
         val COLLECT_DB_INIT = "collect_db_init"
+        val SETTINGS_DB_INIT = "setting_db_init"
+        val PROGRESSION_DB_INIT = "progression_db_init"
+
     }
 }
