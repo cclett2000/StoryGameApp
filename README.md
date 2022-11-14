@@ -12,16 +12,6 @@
 
 The **Story Game!** is an interactive novel where players will be able to read through and be a part of an epic adventure my making decisions that will alter the overall story.
 
-### App Evaluation
-
-[Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
-
 ## Product Spec
 
 ### 1. User Features (Required and Optional)
